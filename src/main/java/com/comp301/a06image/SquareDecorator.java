@@ -26,10 +26,10 @@ public class SquareDecorator implements Image{
     @Override
     public Color getPixelColor(int x, int y) {
         if (x < 0 || x >= sqSize) {
-            return null;
+            return im.getPixelColor(x,y);
         }
         if (y < 0 || y >= sqSize) {
-            return null;
+            return im.getPixelColor(x,y);
         }
         return sqColor;
     }

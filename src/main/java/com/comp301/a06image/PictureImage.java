@@ -30,7 +30,7 @@ public class PictureImage implements Image {
         if (y < 0 || y >= height) {
             throw new IllegalArgumentException("Invalid height");
         }
-        return image.getGraphics().getColor();
+        return new Color(image.getRGB(x, y));
     }
 
     @Override

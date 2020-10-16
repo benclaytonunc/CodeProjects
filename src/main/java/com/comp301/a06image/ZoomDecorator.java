@@ -1,6 +1,7 @@
 package com.comp301.a06image;
 
 import java.awt.*;
+import java.lang.*;
 
 public class ZoomDecorator implements Image {
     private Image im;
@@ -11,10 +12,10 @@ public class ZoomDecorator implements Image {
         if (multiple < 0) {
             throw new IllegalArgumentException();
         }
+
     }
     public ZoomDecorator(Image image) {
-        this.im = image;
-        this.multiple = 2;
+        this(image, 2);
     }
 
     @Override

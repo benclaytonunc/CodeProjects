@@ -17,8 +17,8 @@ public class CircleDecorator implements Image {
         this.cenY = cy;
         this.cirColor = color;
         this.im = image;
-        if (rad < 0) {
-            throw new IllegalArgumentException("- radius");
+        if (rad < 0 || (image == null)) {
+            throw new IllegalArgumentException("wrong args");
         }
 
     }

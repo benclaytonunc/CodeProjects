@@ -13,7 +13,8 @@ public class Main {
    */
   public static Image makeImage() throws IOException {
     // TODO use this method for testing your decorators
-    return null;
+    PictureImage kmp = new PictureImage("img/kmp.jpg");
+    return kmp;
   }
 
   /**
@@ -21,7 +22,8 @@ public class Main {
    * the makeImage() method above will be generated and displayed on the screen. You don't need to
    * make any changes to this main() method.
    */
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     Application.launch(ImageDisplay.class, args);
+    makeImage();
   }
 }

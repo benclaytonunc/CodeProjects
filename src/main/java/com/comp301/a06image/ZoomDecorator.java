@@ -13,6 +13,9 @@ public class ZoomDecorator implements Image {
     public ZoomDecorator(Image image, int multiplier) {
         this.im = image;
         this.multiple = multiplier;
+        if (image == null) {
+            throw new IllegalArgumentException();
+        }
         if (multiple < 0) {
             throw new IllegalArgumentException();
         }
@@ -29,8 +32,8 @@ public class ZoomDecorator implements Image {
             throw new IllegalArgumentException();
         }
         if (multiple > 1) {
-            x = x / multiple;
-            y = y / multiple;
+            x = x * multiple;
+            y = y * multiple;
         }
         return im.getPixelColor(x,y);
     }

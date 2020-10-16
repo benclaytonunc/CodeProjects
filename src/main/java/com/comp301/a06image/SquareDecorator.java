@@ -9,11 +9,15 @@ public class SquareDecorator implements Image{
     private int sqSize;
     private int sqX;
     private int sqY;
+    private BufferedImage image;
+    private Color sqColor;
 
     public SquareDecorator(Image image, int squareX, int squareY, int squareSize, Color color) {
+        this.image = (BufferedImage) image;
         this.sqSize = squareSize;
         this.sqX = squareX;
         this.sqY = squareY;
+        this.sqColor = color;
         if (image == null || squareSize < 0) {
             throw new IllegalArgumentException();
         }
@@ -22,22 +26,22 @@ public class SquareDecorator implements Image{
     @Override
     public Color getPixelColor(int x, int y) {
         if (x < 0 || x >= sqSize) {
-            throw new IllegalArgumentException("Invalid width");
+            return new Color(image.getRGB(x,y));
         }
         if (y < 0 || y >= sqSize) {
-            throw new IllegalArgumentException("Invalid height");
+            return new Color(image.getRGB(x,y));
         }
-        return new Color(output.getRGB(x, y));
+        return sqColor;
     }
 
     @Override
     public int getWidth() {
-        return sqX;
+        return sqSize - sqX;
     }
 
     @Override
     public int getHeight() {
-        return sqY;
+        return sqSize - sqY;
     }
 
     @Override

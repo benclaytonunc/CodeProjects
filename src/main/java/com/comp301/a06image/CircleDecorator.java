@@ -25,25 +25,34 @@ public class CircleDecorator implements Image {
 
     @Override
     public Color getPixelColor(int x, int y) {
+        //if x and y are neg
+        //if x and y are greater than get width
+        if (x < 0 || y < 0) {
+            throw new IllegalArgumentException();
+        }
+        if (x > getWidth() || y > getWidth()) {
+            return im.getPixelColor(x,y);
+        }
         d = Math.sqrt(Math.pow((x - cenX), 2)+(Math.pow((y - cenY), 2)));
-        if (d < rad) {
-            im.getPixelColor(x, y);
+
+        if (d >= rad) {
+           return im.getPixelColor(x, y);
         }
         return cirColor;
     }
 
     @Override
     public int getWidth() {
-        return rad*2;
+        return im.getWidth();
     }
 
     @Override
     public int getHeight() {
-        return rad*2;
+        return im.getHeight();
     }
 
     @Override
     public int getNumLayers() {
-        return 2;
+        return 1 + im.getNumLayers();
     }
 }

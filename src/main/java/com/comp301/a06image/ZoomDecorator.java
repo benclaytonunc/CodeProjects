@@ -6,6 +6,10 @@ import java.lang.*;
 public class ZoomDecorator implements Image {
     private Image im;
     private int multiple;
+    public ZoomDecorator(Image image) {
+        this(image, 2);
+    }
+
     public ZoomDecorator(Image image, int multiplier) {
         this.im = image;
         this.multiple = multiplier;
@@ -14,9 +18,7 @@ public class ZoomDecorator implements Image {
         }
 
     }
-    public ZoomDecorator(Image image) {
-        this(image, 2);
-    }
+
 
     @Override
     public Color getPixelColor(int x, int y) {
@@ -25,6 +27,10 @@ public class ZoomDecorator implements Image {
         }
         if (x >= getWidth() || y >= getHeight()) {
             throw new IllegalArgumentException();
+        }
+        if (multiple > 1) {
+            x = x / multiple;
+            y = y / multiple;
         }
         return im.getPixelColor(x,y);
     }

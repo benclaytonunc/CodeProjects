@@ -13,7 +13,7 @@ public class SquareDecorator implements Image{
     private Color sqColor;
 
     public SquareDecorator(Image image, int squareX, int squareY, int squareSize, Color color) {
-        this.image = (BufferedImage) image;
+       // this.image = (BufferedImage) image;
         this.sqSize = squareSize;
         this.sqX = squareX;
         this.sqY = squareY;

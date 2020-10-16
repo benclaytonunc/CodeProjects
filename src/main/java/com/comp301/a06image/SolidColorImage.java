@@ -19,21 +19,27 @@ public class SolidColorImage implements Image {
     }
     @Override
     public Color getPixelColor(int x, int y) {
-        return null;
+        if (x < 0 || x >= width) {
+            throw new IllegalArgumentException("Invalid width");
+        }
+        if (y < 0 || y >= height) {
+            throw new IllegalArgumentException("Invalid height");
+        }
+        return color;
     }
 
     @Override
     public int getWidth() {
-        return 0;
+        return this.width;
     }
 
     @Override
     public int getHeight() {
-        return 0;
+        return this.height;
     }
 
     @Override
     public int getNumLayers() {
-        return 0;
+        return 1;
     }
 }

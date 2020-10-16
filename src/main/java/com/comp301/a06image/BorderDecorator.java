@@ -34,7 +34,7 @@ public class BorderDecorator implements Image{
         if (x >= (getWidth() - thicc)) {
             return bc;
         }
-        if (y >= getHeight() - thicc){
+        if (y >= (getHeight() - thicc)){
             return bc;
         }
         return im.getPixelColor(x,y);

@@ -14,6 +14,7 @@ public class Main {
   public static Image makeImage() throws IOException {
     // TODO use this method for testing your decorators
     PictureImage kmp = new PictureImage("img/kmp.jpg");
+    BorderDecorator bd = new BorderDecorator(kmp, 5, Color.red);
     return kmp;
   }
 
@@ -25,5 +26,7 @@ public class Main {
   public static void main(String[] args) throws IOException {
     Application.launch(ImageDisplay.class, args);
     makeImage();
+
+
   }
 }

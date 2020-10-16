@@ -7,9 +7,13 @@ import java.awt.image.BufferedImage;
 public class SquareDecorator implements Image{
     private BufferedImage output;
     private int sqSize;
+    private int sqX;
+    private int sqY;
 
     public SquareDecorator(Image image, int squareX, int squareY, int squareSize, Color color) {
         this.sqSize = squareSize;
+        this.sqX = squareX;
+        this.sqY = squareY;
         if (image == null || squareSize < 0) {
             throw new IllegalArgumentException();
         }
@@ -28,16 +32,16 @@ public class SquareDecorator implements Image{
 
     @Override
     public int getWidth() {
-        return sqSize;
+        return sqX;
     }
 
     @Override
     public int getHeight() {
-        return sqSize;
+        return sqY;
     }
 
     @Override
     public int getNumLayers() {
-        return 1;
+        return 2;
     }
 }

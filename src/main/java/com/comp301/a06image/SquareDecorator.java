@@ -9,11 +9,11 @@ public class SquareDecorator implements Image{
     private int sqSize;
     private int sqX;
     private int sqY;
-    private BufferedImage image;
+    private Image im;
     private Color sqColor;
 
     public SquareDecorator(Image image, int squareX, int squareY, int squareSize, Color color) {
-       // this.image = (BufferedImage) image;
+        this.im = image;
         this.sqSize = squareSize;
         this.sqX = squareX;
         this.sqY = squareY;
@@ -26,22 +26,22 @@ public class SquareDecorator implements Image{
     @Override
     public Color getPixelColor(int x, int y) {
         if (x < 0 || x >= sqSize) {
-            return new Color(image.getRGB(x,y));
+            return new Color(((BufferedImage) im).getRGB(x,y));
         }
         if (y < 0 || y >= sqSize) {
-            return new Color(image.getRGB(x,y));
+            return new Color(((BufferedImage) im).getRGB(x,y));
         }
         return sqColor;
     }
 
     @Override
     public int getWidth() {
-        return sqSize - sqX;
+        return im.getWidth();
     }
 
     @Override
     public int getHeight() {
-        return sqSize - sqY;
+        return im.getHeight();
     }
 
     @Override

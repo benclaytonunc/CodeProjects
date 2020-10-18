@@ -25,10 +25,7 @@ public class ZoomDecorator implements Image {
 
     @Override
     public Color getPixelColor(int x, int y) {
-        if (x < 0 || y < 0) {
-            throw new IllegalArgumentException();
-        }
-        if (x >= (im.getWidth() * multiple) || y >= (im.getHeight() * multiple)) {
+        if (x < 0 || y < 0 || x >= (im.getWidth() * multiple) || y >= (im.getHeight() * multiple)) {
             throw new IllegalArgumentException();
         }
         int newX = x / multiple;
@@ -39,12 +36,12 @@ public class ZoomDecorator implements Image {
 
     @Override
     public int getWidth() {
-        return getWidth()*multiple;
+        return im.getWidth()*multiple;
     }
 
     @Override
     public int getHeight() {
-        return getHeight()*multiple;
+        return im.getHeight()*multiple;
     }
 
     @Override

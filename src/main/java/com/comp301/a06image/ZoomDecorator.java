@@ -16,7 +16,7 @@ public class ZoomDecorator implements Image {
         if (image == null) {
             throw new IllegalArgumentException();
         }
-        if (multiple < 0) {
+        if (multiple <= 0) {
             throw new IllegalArgumentException();
         }
 
@@ -28,14 +28,13 @@ public class ZoomDecorator implements Image {
         if (x < 0 || y < 0) {
             throw new IllegalArgumentException();
         }
-        if (x >= getWidth() || y >= getHeight()) {
+        if (x >= im.getWidth() || y >= im.getHeight()) {
             throw new IllegalArgumentException();
         }
-        if (multiple > 1) {
-            x = x * multiple;
-            y = y * multiple;
-        }
-        return im.getPixelColor(x,y);
+        int newX = x / multiple;
+        int newY = y / multiple;
+
+        return im.getPixelColor(newX,newY);
     }
 
     @Override

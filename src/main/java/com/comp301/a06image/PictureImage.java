@@ -15,7 +15,6 @@ public class PictureImage implements Image {
         image = ImageIO.read(new File(pathname));
         this.width = image.getWidth();
         this.height = image.getHeight();
-        this.colorInt = image.getRGB(width/2, height/2);
 
        // this.pathname = new String(getWidth(), getHeight(), getRGB());
     }

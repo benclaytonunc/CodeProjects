@@ -14,8 +14,19 @@ public class Main {
   public static Image makeImage() throws IOException {
     // TODO use this method for testing your decorators
     PictureImage kmp = new PictureImage("img/kmp.jpg");
-    BorderDecorator bd = new BorderDecorator(kmp, 5, Color.red);
-    return kmp;
+    Color red = new Color(255, 0, 0);
+    Color orange = new Color(200, 80, 10);
+    Color yellow = new Color(255, 255, 0);
+
+    Color blue = new Color(0, 0, 255);
+
+    Image im = new PictureImage("img/kmp.jpg");
+    Image ogBorder = new BorderDecorator(im, 5, red);
+    Image secondBorder = new BorderDecorator(ogBorder, 50, blue);
+    Image addACircle = new CircleDecorator(secondBorder, 50, 50, 40, yellow);
+    Image addASquare = new SquareDecorator(addACircle, 100, 100, 40, orange);
+    Image end = new ZoomDecorator(addASquare);
+    return end;
   }
 
   /**
@@ -25,8 +36,6 @@ public class Main {
    */
   public static void main(String[] args) throws IOException {
     Application.launch(ImageDisplay.class, args);
-    makeImage();
-
 
   }
 }

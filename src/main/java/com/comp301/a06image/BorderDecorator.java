@@ -19,25 +19,17 @@ public class BorderDecorator implements Image{
 
     @Override
     public Color getPixelColor(int x, int y) {
-        if (x < 0 || y < 0) {
+        if (x < 0 || y < 0 || x >= (im.getWidth() + 2*thicc) || y >= (im.getHeight() + 2*thicc)) {
             throw new IllegalArgumentException();
         }
-        if (x > getWidth() || y > getHeight()) {
-            throw new IllegalArgumentException();
-        }
-        if (x < thicc) {
+
+        if (x < thicc || (x >= (im.getWidth() + thicc) && x < (im.getWidth() + 2 * thicc) )) {
             return bc;
         }
-        if (y < thicc) {
+        if (y < thicc || (y >= (im.getHeight() + thicc) && x < (im.getHeight() + 2 * thicc))) {
             return bc;
         }
-        if (x >= (getWidth() - thicc)) {
-            return bc;
-        }
-        if (y >= (getHeight() - thicc)){
-            return bc;
-        }
-        return im.getPixelColor(x,y);
+        return im.getPixelColor(x - thicc,y - thicc);
     }
 
     @Override

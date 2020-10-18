@@ -28,7 +28,7 @@ public class ZoomDecorator implements Image {
         if (x < 0 || y < 0) {
             throw new IllegalArgumentException();
         }
-        if (x >= im.getWidth() || y >= im.getHeight()) {
+        if (x >= (im.getWidth() * multiple) || y >= (im.getHeight() * multiple)) {
             throw new IllegalArgumentException();
         }
         int newX = x / multiple;
